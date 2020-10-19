@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:weather_app/api.dart';
+import 'package:weather_app/button.dart';
 import 'package:weather_app/forecast.dart';
+import 'package:weather_app/search.dart';
 import 'package:weather_app/weather_model.dart';
 
 class Currentweather extends StatefulWidget {
@@ -65,7 +67,13 @@ class _CurrentweatherState extends State<Currentweather> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.4),
+                  RaisedButton(onPressed: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
+                    
+                  },
+                  child: Text("Searcj By City"),
+                  ),
+                  SizedBox(height:20),
                   Forect(),
                 ],
               );
