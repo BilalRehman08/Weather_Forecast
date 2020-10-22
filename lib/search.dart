@@ -7,9 +7,6 @@ import 'dart:convert';
 
 import 'button.dart';
 
-
-
-
 class Searchh extends StatefulWidget {
   @override
   _SearchhState createState() => _SearchhState();
@@ -17,8 +14,6 @@ class Searchh extends StatefulWidget {
 
 class _SearchhState extends State<Searchh> {
 
-
-    
 
     Future<Weather> searchdata() async {
   
@@ -32,14 +27,6 @@ class _SearchhState extends State<Searchh> {
         throw Exception('Failed to load Weather');
       }
     }
-
-
-
-
-
-
-
-
 
 
   @override
@@ -74,6 +61,15 @@ class _SearchhState extends State<Searchh> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
+                  RaisedButton(
+                    child: Text("BACK"),
+                    onPressed: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
+                    setState(() {
+                      joinn.clear();
+                      abc = "";
+                    });
+                  })
                   
                   
                 ],

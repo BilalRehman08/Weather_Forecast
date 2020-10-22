@@ -71,7 +71,7 @@ class _CurrentweatherState extends State<Currentweather> {
                     Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
                     
                   },
-                  child: Text("Searcj By City"),
+                  child: Text("Search By City"),
                   ),
                   SizedBox(height:20),
                   Forect(),

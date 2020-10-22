@@ -26,8 +26,13 @@ class _ButtonnState extends State<Buttonn> {
                 controller: joinn),
             ),
             SizedBox(height: 30),
-            RaisedButton(onPressed: (){
+            RaisedButton(
+              child: Text("SEARCH"),
+              onPressed: (){
               Navigator.push(context,MaterialPageRoute(builder: (context)=>Searchh()));
+              setState(() {
+                abc = joinn.text;
+              });
             }),
           ]
         ),
