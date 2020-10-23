@@ -32,59 +32,95 @@ class _SearchhState extends State<Searchh> {
   @override
   Widget build(BuildContext context) {
     return 
-              Container(
-                child:FutureBuilder<Weather>(
+              MaterialApp(
+                              home: Scaffold(
+                                body: Container(
+                                  height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              
+              image: AssetImage("assets/images/background.jpg"),
+              fit: BoxFit.cover),
+
+        ),
+
+                    child:FutureBuilder<Weather>(
           future: searchdata(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "${snapshot.data.temp} °C",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    snapshot.data.name,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    snapshot.data.main,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  RaisedButton(
-                    child: Text("BACK"),
-                    onPressed: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
-                    setState(() {
-                      joinn.clear();
-                      abc = "";
-                    });
-                  })
-                  
-                  
-                ],
-              );
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${snapshot.data.temp} °C",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        snapshot.data.name,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        snapshot.data.main,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                      RaisedButton(
+                        child: Text("BACK"),
+                        onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
+                        setState(() {
+                          joinn.clear();
+                          abc = "";
+                        });
+                      })
+                      
+                      
+                    ],
+                  );
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      
+                    
+                    Text(
+                        " No city found with this name",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "' $abc '",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      
+                      ],));
             }
 
             return Text(" ");
             
           },
         ),
-                
-              
+                    
+                  
 
+                  ),
+                ),
               );
             
   }

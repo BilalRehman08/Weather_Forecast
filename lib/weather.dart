@@ -19,7 +19,6 @@ class _CurrentweatherState extends State<Currentweather> {
     super.initState();
     weatherData = load_data();
 
-    print(weatherData);
   }
 
   @override
@@ -30,8 +29,7 @@ class _CurrentweatherState extends State<Currentweather> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
-              colorFilter: new ColorFilter.mode(
-                  Colors.black.withOpacity(0.3), BlendMode.dstATop),
+              
               image: AssetImage("assets/images/background.jpg"),
               fit: BoxFit.cover),
 
@@ -44,36 +42,45 @@ class _CurrentweatherState extends State<Currentweather> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                
                 children: [
+                  SizedBox(height: MediaQuery.of(context).size.height*0.1),
                   Text(
                     "${snapshot.data.temp} °C",
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 50,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     snapshot.data.name,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     snapshot.data.main,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(height:MediaQuery.of(context).size.height*0.01),
                   RaisedButton(onPressed: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context)=>Buttonn()));
                     
                   },
-                  child: Text("Search By City"),
+                  child: Text("Search By City",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17.5),),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(6.0),
+                    
+                  ),
+              
+                  elevation: 15,
                   ),
                   SizedBox(height:20),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.35),
                   Forect(),
                 ],
               );
